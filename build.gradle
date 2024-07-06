@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id "org.sonarqube" version "5.0.0.4638"
 	id "io.freefair.lombok" version "8.6"
 	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
@@ -30,4 +31,11 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+sonar {
+	properties {
+		property "sonar.projectKey", "HarshaVardhanNaiduGangavarapu_sonarqube_bb240e5a-4ff2-410f-a68a-6debb83f618f"
+		property "sonar.projectName", "sonarqube"
+	}
 }
