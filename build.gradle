@@ -55,7 +55,7 @@ jacocoTestReport {
 jacocoTestCoverageVerification {
 	afterEvaluate {
 		classDirectories.setFrom(files(classDirectories.files.collect {
-			fileTree(dir: it, exclude: [
+			fileTree(dir: "${project.buildDir}/classes/main", exclude: [
 					"**/VelocityLimitsApplication.*"
 			])
 		}))
