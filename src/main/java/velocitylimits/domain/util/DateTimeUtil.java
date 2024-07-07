@@ -60,4 +60,8 @@ public class DateTimeUtil {
         LocalDate sunday = localDate.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
         return LocalDateTime.of(sunday, LocalTime.MAX.truncatedTo(ChronoUnit.SECONDS));
     }
+
+    public static LocalDateTime getTimeNow() {
+        return LocalDateTime.now();
+    }
 }
