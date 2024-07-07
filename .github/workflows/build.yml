@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-          cache: 'gradle'
       - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
@@ -42,4 +41,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: ./gradlew build jacocoTestReport dependencyCheckAnalyze sonar --info
+        run: ./gradlew build jacocoTestReport dependencyCheckAnalyze -PdependencyCheckDataDir=${{ runner.os }}/.gradle/dependency-check-data  sonar --info

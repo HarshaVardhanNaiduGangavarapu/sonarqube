@@ -59,10 +59,6 @@ dependencyCheck {
 		delay = 2000
 		validForHours = 24 // Automatically update the database before analysis after 24 hours
 	}
-
-	data {
-		directory = file("${System.getProperty('user.home')}/.gradle/dependency-check-data")
-	}
 }
 
 jacocoTestReport {
