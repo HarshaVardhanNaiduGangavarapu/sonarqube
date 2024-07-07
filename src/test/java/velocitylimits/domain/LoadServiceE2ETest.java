@@ -1,4 +1,4 @@
-package com.vault.velocitylimits.domain.service;
+package velocitylimits.domain;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Assertions;
@@ -24,7 +24,7 @@ public class LoadServiceE2ETest {
     @Value("${load.funds.output.file}")
     private String actualOutputFile;
     @Autowired
-    private ILoadFundsService loadFundsService;
+    private com.vault.velocitylimits.domain.service.ILoadFundsService iLoadFundsService;
 
     @Test
     @DisplayName("Test End-to-End functionality of load funds service")
@@ -34,7 +34,7 @@ public class LoadServiceE2ETest {
         String expectedOutput = FileUtils.readFileToString(expectedFile).replace("\r\n", "\n");
 
         // execute
-        loadFundsService.executeFundsLoadingToAccounts();
+        iLoadFundsService.executeFundsLoadingToAccounts();
 
         // verify
         File actualFile = new File(this.getClass().getClassLoader().getResource(actualOutputFile).getFile());
