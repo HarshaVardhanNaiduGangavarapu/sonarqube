@@ -180,4 +180,8 @@ public class LoadFundsService implements ILoadFundsService {
                 }
         ).filter(loadFunds -> customerLoadIdsSet.add(loadFunds.getCustomerId() + "/" + loadFunds.getId())).collect(Collectors.toList());
     }
+
+    public static LocalDateTime getTimeNow() {
+        return LocalDateTime.now();
+    }
 }
