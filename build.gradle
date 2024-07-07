@@ -42,25 +42,6 @@ jacocoTestReport {
 	}
 
 	dependsOn test
-
-	afterEvaluate {
-		classDirectories.setFrom(files(classDirectories.files.collect {
-			fileTree(dir: it, exclude: [
-					"**/VelocityLimitsApplication.*"
-			])
-		}))
-	}
-}
-
-jacocoTestCoverageVerification {
-	afterEvaluate {
-		classDirectories.setFrom(files(classDirectories.files.collect {
-			fileTree(dir: "${project.buildDir}/classes/java/main", exclude: [
-					"**/VelocityLimitsApplication.class",
-					"**/util/DateTimeUtil.class"
-			])
-		}))
-	}
 }
 
 test.finalizedBy 'jacocoTestReport'
