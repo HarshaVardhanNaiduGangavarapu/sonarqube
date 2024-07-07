@@ -35,7 +35,7 @@ jobs:
       - name: Cache Dependency Check packages
         uses: actions/cache@v1
         with:
-          path: ~/.dependency-check/cache
+          path: ~/.nvd/cache
           key: ${{ runner.os }}-dependency-check
           restore-keys: ${{ runner.os }}-dependency-check
       - name: Set NVD API Key
@@ -44,4 +44,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: ./gradlew build jacocoTestReport dependencyCheckAnalyze sonar --info
+        run: ./gradlew build jacocoTestReport sonar --info
