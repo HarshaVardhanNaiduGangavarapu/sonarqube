@@ -1,4 +1,4 @@
-package com.vault.velocitylimits.domain.util;
+package velocitylimits.domain.util;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

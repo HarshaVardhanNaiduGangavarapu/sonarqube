@@ -1,9 +1,9 @@
 package velocitylimits.domain.util;
 
-import com.vault.velocitylimits.domain.service.LoadFundsException;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import velocitylimits.domain.service.LoadFundsException;
 
 import java.io.File;
 import java.io.IOException;

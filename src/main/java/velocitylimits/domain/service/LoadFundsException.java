@@ -1,4 +1,4 @@
-package com.vault.velocitylimits.domain.service;
+package velocitylimits.domain.service;
 
 /**
  * @author harshagangavarapu

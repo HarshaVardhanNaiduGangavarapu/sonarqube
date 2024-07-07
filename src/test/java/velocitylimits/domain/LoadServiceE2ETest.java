@@ -24,7 +24,7 @@ public class LoadServiceE2ETest {
     @Value("${load.funds.output.file}")
     private String actualOutputFile;
     @Autowired
-    private com.vault.velocitylimits.domain.service.ILoadFundsService iLoadFundsService;
+    private velocitylimits.domain.service.ILoadFundsService iLoadFundsService;
 
     @Test
     @DisplayName("Test End-to-End functionality of load funds service")

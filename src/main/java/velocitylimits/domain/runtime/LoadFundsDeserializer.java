@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.vault.velocitylimits.domain.model.LoadFunds;
+import velocitylimits.domain.model.LoadFunds;
 
 import java.io.IOException;
 import java.time.LocalDateTime;

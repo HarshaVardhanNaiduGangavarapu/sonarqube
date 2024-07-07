@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.vault.velocitylimits.domain.model.LoadFunds;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import velocitylimits.domain.model.LoadFunds;
 
 /**
  * @author harshagangavarapu

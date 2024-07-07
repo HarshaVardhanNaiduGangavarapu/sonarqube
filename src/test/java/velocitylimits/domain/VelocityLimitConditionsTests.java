@@ -1,7 +1,6 @@
 package velocitylimits.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vault.velocitylimits.domain.service.VelocityLimitException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import velocitylimits.domain.repository.ILoadedCustomerFundsRepository;
 import velocitylimits.domain.repository.LoadedCustomerFundsEntity;
+import velocitylimits.domain.service.VelocityLimitException;
 import velocitylimits.domain.service.impl.LoadFundsService;
 
 import java.time.LocalDateTime;

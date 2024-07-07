@@ -1,4 +1,4 @@
-package com.vault.velocitylimits.domain.model;
+package velocitylimits.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
