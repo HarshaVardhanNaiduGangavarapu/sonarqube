@@ -29,16 +29,19 @@ jobs:
       - name: Cache Gradle packages and dependency check data
         uses: actions/cache@v1
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/dependency-check-data # cache directory for Dependency-Check data
+          path: ~/.gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Set NVD API Key
         run: echo "NVD_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
+      - name: Run Dependency Check
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: ./gradlew dependencyCheckAnalyze -PdependencyCheckDataDir=/home/runner/.gradle/dependency-check-data --info
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: ./gradlew build jacocoTestReport dependencyCheckAnalyze -PdependencyCheckDataDir=/home/runner/.gradle/dependency-check-data  sonar --info
+        run: ./gradlew build jacocoTestReport sonar --info
