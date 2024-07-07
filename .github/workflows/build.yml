@@ -33,6 +33,10 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Display cache folder contents
+        run: |
+          echo "Displaying contents of ~/.gradle/dependency-check-data/"
+          ls -R ~/.gradle/dependency-check-data/
       - name: Set NVD API Key
         run: echo "NVD_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
       - name: Run Dependency Check
