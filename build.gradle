@@ -51,11 +51,11 @@ tasks.named('test') {
 
 dependencyCheck {
 	format='ALL'
-	cveValidForHours = 24 // Automatically update the database before analysis after 24 hours
 
 	nvd {
 		apiKey = System.getenv("NVD_API_KEY")
 		delay = 2000
+		validForHours = 24 // Automatically update the database before analysis after 24 hours
 	}
 
 	// Configure cache options
