@@ -43,10 +43,23 @@ jacocoTestReport {
 
 	dependsOn test
 
-	excludes = [
-	        "**/VelocityLimitsApplication.*",
-			"**/util/**"
-	]
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: [
+					"**/VelocityLimitsApplication.*"
+			])
+		}))
+	}
+}
+
+jacocoTestCoverageVerification {
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: [
+					"**/VelocityLimitsApplication.*"
+			])
+		}))
+	}
 }
 
 test.finalizedBy 'jacocoTestReport'
