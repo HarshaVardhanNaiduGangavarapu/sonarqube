@@ -41,4 +41,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: ./gradlew build jacocoTestReport dependencyCheckAnalyze -PdependencyCheckDataDir=~/.gradle/dependency-check-data  sonar --info
+        run: ./gradlew build jacocoTestReport dependencyCheckAnalyze -PdependencyCheckDataDir=/home/runner/.gradle/dependency-check-data  sonar --info
