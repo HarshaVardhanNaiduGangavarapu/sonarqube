@@ -32,8 +32,16 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
+      - name: Cache Dependency Check packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.dependency-check/cache
+          key: ${{ runner.os }}-dependency-check
+          restore-keys: ${{ runner.os }}-dependency-check
+      - name: Set NVD API Key
+        run: echo "NV_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: ./gradlew build jacocoTestReport sonar --info
+        run: ./gradlew build jacocoTestReport dependencyCheckAnalyze sonar --info
