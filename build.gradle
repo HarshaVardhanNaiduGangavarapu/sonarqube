@@ -42,6 +42,14 @@ jacocoTestReport {
 	}
 
 	dependsOn test
+
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: [
+					"**/Velocitylimitsapplication.*"
+			])
+		}))
+	}
 }
 
 test.finalizedBy 'jacocoTestReport'
