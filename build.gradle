@@ -48,6 +48,10 @@ tasks.named('test') {
 
 dependencyCheck {
 	format='ALL'
+
+	nvd {
+		apiKey = System.getenv("NVD_API_KEY")
+	}
 }
 
 jacocoTestReport {
