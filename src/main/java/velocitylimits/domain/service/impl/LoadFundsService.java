@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
 /**
  * @author harshagangavarapu
  */
@@ -59,6 +58,9 @@ public class LoadFundsService implements ILoadFundsService {
         this.OUTPUT_FILE = OUTPUT_FILE;
     }
 
+    /**
+     *
+     */
     public void executeFundsLoadingToAccounts() {
         LOGGER.info("Started executing fund loading into accounts.");
         // read transactions data
