@@ -56,7 +56,8 @@ jacocoTestCoverageVerification {
 	afterEvaluate {
 		classDirectories.setFrom(files(classDirectories.files.collect {
 			fileTree(dir: "${project.buildDir}/classes/main", exclude: [
-					"**/VelocityLimitsApplication.*"
+					"**/VelocityLimitsApplication.class",
+					"**/util/DateTimeUtil.class"
 			])
 		}))
 	}
