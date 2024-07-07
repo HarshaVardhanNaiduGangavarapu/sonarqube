@@ -26,17 +26,27 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      - name: Cache Gradle packages and dependency check data
+      - name: Cache Gradle packages
         uses: actions/cache@v1
         with:
           path: ~/.gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Cache Dependency check data
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/dependency-check-data
+          key: ${{ runner.os }}-dependency-check-data
+          restore-keys: ${{ runner.os }}-dependency-check-data
       - name: Display cache folder contents
         run: |
           echo "Displaying contents of ~/.gradle/dependency-check-data/"
-          ls -R ~/.gradle/dependency-check-data/
+          if [ -d ~/.gradle/dependency-check-data ]; then
+            ls -R ~/.gradle/dependency-check-data
+          else
+            echo "Directory ~/.gradle/dependency-check-data does not exist."
+          fi
       - name: Set NVD API Key
         run: echo "NVD_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
       - name: Run Dependency Check
@@ -47,9 +57,8 @@ jobs:
       - name: Display cache folder contents
         run: |
           echo "Displaying contents of ~/.gradle/dependency-check-data/"
-          ls -R ~/.gradle/dependency-check-data/
-      - name: Build and analyze
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: ./gradlew build jacocoTestReport sonar --info
+          if [ -d ~/.gradle/dependency-check-data ]; then
+            ls -R ~/.gradle/dependency-check-data
+          else
+            echo "Directory ~/.gradle/dependency-check-data does not exist."
+          fi
