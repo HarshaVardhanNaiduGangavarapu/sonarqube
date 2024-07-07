@@ -61,7 +61,7 @@ public class FileWriterUtil {
     public static String getJSONStringFromObj(Object objectValue) {
         try {
             return objectMapper.writeValueAsString(objectValue);
-        } catch (JsonProcessingException jpe) {
+        } catch (IOException jpe) {
             LOGGER.error("Failed to convert object value to JSON String.", jpe);
             throw new LoadFundsException("Failed to convert object value to JSON String." + jpe.getMessage());
         }

@@ -44,7 +44,6 @@ dependencies {
 	// Known vulnerable dependency
 	implementation 'commons-collections:commons-collections:3.2.1'
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
-	implementation 'commons-io:commons-io:0.1'
 }
 
 tasks.named('test') {
