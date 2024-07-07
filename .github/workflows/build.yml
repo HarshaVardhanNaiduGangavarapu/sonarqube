@@ -39,7 +39,7 @@ jobs:
           key: ${{ runner.os }}-dependency-check
           restore-keys: ${{ runner.os }}-dependency-check
       - name: Set NVD API Key
-        run: echo "NV_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
+        run: echo "NVD_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
