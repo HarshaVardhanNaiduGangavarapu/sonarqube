@@ -31,7 +31,7 @@ jobs:
         with:
           path: |
             ~/.gradle/caches
-            ./build/dependency-check/data # Custom cache directory for Dependency-Check data
+            ~/.gradle/dependency-check-data # cache directory for Dependency-Check data
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
             ${{ runner.os }}-gradle-

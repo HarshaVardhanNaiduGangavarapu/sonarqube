@@ -57,14 +57,6 @@ dependencyCheck {
 		delay = 2000
 		validForHours = 24 // Automatically update the database before analysis after 24 hours
 	}
-
-	// Configure cache options
-	data {
-		cache {
-			enabled = true
-			baseDir = file("$buildDir/dependency-check/data") // Custom cache directory location
-		}
-	}
 }
 
 jacocoTestReport {
