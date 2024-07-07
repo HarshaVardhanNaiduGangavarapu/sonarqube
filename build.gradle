@@ -42,9 +42,9 @@ dependencies {
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
 
 	// Known vulnerable dependency
-	implementation 'org.apache.commons:commons-collections4:4.0'
+	implementation 'commons-collections:commons-collections:3.2.1'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
 	implementation 'commons-io:commons-io:0.1'
-
 }
 
 tasks.named('test') {
@@ -58,6 +58,10 @@ dependencyCheck {
 		apiKey = System.getenv("NVD_API_KEY")
 		delay = 2000
 		validForHours = 24 // Automatically update the database before analysis after 24 hours
+	}
+
+	data {
+		directory = file("${System.getProperty('user.home')}/.gradle/dependency-check-data")
 	}
 }
 
