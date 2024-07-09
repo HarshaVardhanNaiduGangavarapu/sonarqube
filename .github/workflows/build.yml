@@ -22,10 +22,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-      - name: List cache keys
-        id: list-cache-keys
-        run: |
-          echo "::set-output name=cache-keys::$(echo 'list cache keys here, excluding the latest one')"
       - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
