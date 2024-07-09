@@ -40,7 +40,7 @@ jobs:
         with:
           path: ~/.gradle/dependency-check-data
           key: ${{ runner.os }}-dependency-check-data-${{ hashFiles('**/*.*') }}
-          restore-keys: ${{ runner.os }}-dependency-check-data
+          restore-keys: ${{ runner.os }}-dependency-check-data-
       - name: Set NVD API Key
         run: echo "NVD_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
       - name: Run Dependency Check
