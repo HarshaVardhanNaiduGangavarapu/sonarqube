@@ -22,6 +22,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
+      - name: List cache keys
+        id: list-cache-keys
+        run: |
+          echo "::set-output name=cache-keys::$(echo 'list cache keys here, excluding the latest one')"
       - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
@@ -34,12 +38,12 @@ jobs:
           path: ~/.gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+            ${{ runner.os }}-gradle
       - name: Cache Dependency check data
         uses: actions/cache@v1
         with:
           path: ~/.gradle/dependency-check-data
-          key: ${{ runner.os }}-dependency-check-data-${{ hashFiles('**/*.**') }}
+          key: ${{ runner.os }}-dependency-check-data-${{ hashFiles('**/*.*') }}
           restore-keys: ${{ runner.os }}-dependency-check-data
       - name: Set NVD API Key
         run: echo "NVD_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
