@@ -34,7 +34,7 @@ jobs:
           path: ~/.gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-
+            ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
       - name: Cache Dependency check data
         uses: actions/cache@v1
         with:
