@@ -48,3 +48,16 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: ./gradlew dependencyCheckAnalyze -PdependencyCheckDataDir=~/.gradle/dependency-check-data --info
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: ./gradlew build jacocoTestReport sonar --info
+      - name: SonarQube Quality Gate Check
+        uses: sonarsource/sonar-quality-gate-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Fail if Quality Gate fails
+        if: steps.quality-gate.outputs.status != 'OK'
+        run: exit 1
