@@ -174,8 +174,6 @@ public class LoadFundsService implements ILoadFundsService {
                     } catch (JsonProcessingException jpe) {
                         LOGGER.error("Failed to readValue into LoadFunds object for following data: {}", loadFundJsonTxt);
                         throw new LoadFundsException("Unable to read transaction text into an object." + jpe.getMessage());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
                     }
                 }
         ).filter(loadFunds -> customerLoadIdsSet.add(loadFunds.getCustomerId() + "/" + loadFunds.getId())).collect(Collectors.toList());
