@@ -55,9 +55,8 @@ jobs:
         run: ./gradlew build jacocoTestReport sonar --info
       - name: SonarQube Quality Gate Check
         uses: sonarsource/sonar-quality-gate-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          scanMetadataReportFile: build/sonar/report-task.txt
       - name: Fail if Quality Gate fails
         if: steps.quality-gate.outputs.status != 'OK'
         run: exit 1
