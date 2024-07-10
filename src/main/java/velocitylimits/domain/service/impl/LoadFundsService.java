@@ -180,7 +180,7 @@ public class LoadFundsService implements ILoadFundsService {
     }
 
     /**
-     * ABCD efgh ijkl mnop qrst uvw xyz abcd
+     *
      * @return
      */
     public static LocalDateTime getTimeNow() {
