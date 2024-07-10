@@ -42,8 +42,8 @@ dependencies {
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
 
 	// Known vulnerable dependency
-	//implementation 'commons-collections:commons-collections:3.2.1'
-	//implementation 'com.google.guava:guava:12.0.1'
+	implementation 'commons-collections:commons-collections:3.2.1'
+	implementation 'com.google.guava:guava:12.0.1'
 
 }
 
@@ -56,8 +56,7 @@ dependencyCheck {
 
 	nvd {
 		apiKey = System.getenv("NVD_API_KEY")
-		delay = 2000
-		//validForHours = 24 // Automatically update the database before analysis after 24 hours
+		validForHours = 24 // Automatically update the database before analysis after 24 hours
 	}
 }
 
@@ -82,5 +81,6 @@ sonar {
 		property "sonar.dependencyCheck.severity.high", 6.0
 		property "sonar.dependencyCheck.severity.medium", 3.0
 		property "sonar.dependencyCheck.severity.low", 0.0
+		property "ßsonar.dependencyCheck.securityHotspot", true
 	}
 }
