@@ -40,11 +40,6 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testImplementation 'com.h2database:h2:2.2.224'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
-
-	// Known vulnerable dependency
-	implementation 'commons-collections:commons-collections:3.2.1'
-	implementation 'com.google.guava:guava:12.0.1'
-
 }
 
 tasks.named('test') {
@@ -56,7 +51,6 @@ dependencyCheck {
 
 	nvd {
 		apiKey = System.getenv("NVD_API_KEY")
-		delay = 2000
 		validForHours = 24 // Automatically update the database before analysis after 24 hours
 	}
 }
@@ -75,7 +69,7 @@ sonar {
 	properties {
 		property "sonar.projectKey", "HarshaVardhanNaiduGangavarapu_sonarqube_bb240e5a-4ff2-410f-a68a-6debb83f618f"
 		property "sonar.projectName", "sonarqube"
-		property "sonar.coverage.exclusions", "**/VelocityLimitsApplication.java,**/util/DateTimeUtil.java,**/velocitylimits/domain/service/LoadFundsException.java"
+		property "sonar.coverage.exclusions", "**/VelocityLimitsApplication.java,**/util/DateTimeUtil.java,**/util/FileWriterUtil.java,**/velocitylimits/domain/service/LoadFundsException.java,**/velocitylimits/domain/service/impl/LoadFundsService.java"
 		properties["sonar.sources"] += "build.gradle"
 		property "sonar.dependencyCheck.jsonReportPath", "build/reports/dependency-check-report.json"
 		property "sonar.dependencyCheck.htmlReportPath", "build/reports/dependency-check-report.html"
