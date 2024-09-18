@@ -34,13 +34,13 @@ jobs:
           path: ~/.gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-
+            ${{ runner.os }}-gradle
       - name: Cache Dependency check data
         uses: actions/cache@v1
         with:
           path: ~/.gradle/dependency-check-data
-          key: ${{ runner.os }}-dependency-check-data
-          restore-keys: ${{ runner.os }}-dependency-check-data
+          key: ${{ runner.os }}-dependency-check-data-${{ hashFiles('**/*.*') }}
+          restore-keys: ${{ runner.os }}-dependency-check-data-
       - name: Set NVD API Key
         run: echo "NVD_API_KEY=${{ secrets.NVD_API_KEY }}" >> $GITHUB_ENV
       - name: Run Dependency Check
@@ -53,3 +53,11 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: ./gradlew build jacocoTestReport sonar --info
+      - name: SonarQube Quality Gate Check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        with:
+          scanMetadataReportFile: build/sonar/report-task.txt
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
